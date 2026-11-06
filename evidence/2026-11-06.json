@@ -1,0 +1,192 @@
+{
+  "date": "2026-11-06",
+  "sourceCommit": "3ba597f7769e19cc3b5f67e3d6667e7b6318f6a3",
+  "runtime": {
+    "bun": "1.4.2",
+    "declaredBun": "1.4.4",
+    "platform": "Linux",
+    "machine": "x86_64"
+  },
+  "method": "Real source ServerFetch and public plugin APIs, file databases, deterministic local LanguageModelV3; no external LLM",
+  "integration": {
+    "status": "passed",
+    "passed": 13,
+    "checks": [
+      {
+        "name": "public plugin loads and registers RPC",
+        "status": "passed"
+      },
+      {
+        "name": "explicit child identity, inheritance and ID adoption",
+        "status": "passed"
+      },
+      {
+        "name": "explicit Session permissions replace parent inheritance",
+        "status": "passed"
+      },
+      {
+        "name": "pending input retry retains original content and rejects cross-session reuse",
+        "status": "passed"
+      },
+      {
+        "name": "two sessions execute concurrently with isolated durable instructions",
+        "status": "passed"
+      },
+      {
+        "name": "delivered input retry does not enqueue a duplicate",
+        "status": "passed"
+      },
+      {
+        "name": "real tool execution preserves source message and call identity in peer inbox",
+        "status": "passed"
+      },
+      {
+        "name": "instruction remains in model context after compaction",
+        "status": "passed"
+      },
+      {
+        "name": "storage is shared across Location instances and read-modify-write lacks CAS",
+        "status": "passed"
+      },
+      {
+        "name": "public plugin loads bun sqlite and shares explicit database across Locations",
+        "status": "passed"
+      },
+      {
+        "name": "live events expose input lifecycle and Session execution facts",
+        "status": "passed"
+      },
+      {
+        "name": "HTTP durable log replays history with cursor while plugin event subscription stays live-only",
+        "status": "passed"
+      },
+      {
+        "name": "process kill and restart preserve Session, instruction, pending inbox and storage",
+        "status": "passed"
+      }
+    ]
+  },
+  "hostTests": {
+    "passed": 142,
+    "failed": 0,
+    "assertions": 497,
+    "suites": [
+      {
+        "name": "test/session-instructions.test.ts",
+        "tests": "7",
+        "failures": "0"
+      },
+      {
+        "name": "test/session-prompt.test.ts",
+        "tests": "51",
+        "failures": "0"
+      },
+      {
+        "name": "test/agent.test.ts",
+        "tests": "10",
+        "failures": "0"
+      },
+      {
+        "name": "test/session-create.test.ts",
+        "tests": "46",
+        "failures": "0"
+      },
+      {
+        "name": "test/session-run-coordinator.test.ts",
+        "tests": "26",
+        "failures": "0"
+      },
+      {
+        "name": "test/plugin/session-instructions.test.ts",
+        "tests": "2",
+        "failures": "0"
+      }
+    ]
+  },
+  "sqlite": {
+    "status": "passed",
+    "bun": "1.4.2",
+    "checks": [
+      "two processes competing at revision 1 yield exactly one successful claim",
+      "injected transaction failure rolls back task and outbox together",
+      "committed task and notification survive database reopen"
+    ],
+    "claims": [
+      {
+        "owner": "member-a",
+        "changes": 0
+      },
+      {
+        "owner": "member-b",
+        "changes": 1
+      }
+    ]
+  },
+  "observed": {
+    "parallelBarrier": [
+      "A",
+      "B"
+    ],
+    "pluginSessionMethods": [
+      "hook",
+      "list",
+      "create",
+      "get",
+      "remove",
+      "switchAgent",
+      "switchModel",
+      "prompt",
+      "generate",
+      "command",
+      "compact",
+      "synthetic",
+      "interrupt",
+      "update",
+      "move",
+      "wait",
+      "context",
+      "instructions"
+    ],
+    "kvRace": {
+      "before": [
+        0,
+        0
+      ],
+      "after": 1
+    },
+    "sourceIdentityKeys": [
+      "sessionID",
+      "messageID",
+      "callId"
+    ],
+    "replay": {
+      "eventCount": 50,
+      "watermark": 49,
+      "emptyTail": [
+        {
+          "type": "log.synced",
+          "aggregateID": "ses_p0_alpha",
+          "seq": 49
+        }
+      ]
+    },
+    "compactionCompleted": true,
+    "processRecovery": "SIGKILL of first host; second process reopened same native and plugin databases"
+  },
+  "limits": [
+    "npm published bundle not exercised",
+    "Bun 1.4.4 and Node not exercised",
+    "no real model collaboration evaluation",
+    "production full-client authentication adapter not implemented",
+    "no complete Team state machine or operation recovery protocol",
+    "no power-loss or clustered execution guarantee"
+  ],
+  "probeSha256": {
+    "plugin/index.ts": "d14bc85af6b3a99935c5b0c626d912ebed903c0756eaba0833c6945af1e2943f",
+    "plugin/package.json": "1fc721449375cb30ef471b134cdabfd231cd678fd83a5a20baf818cc11b2bc0c",
+    "worker.ts": "75e8a6327713d7a817632c2e6ca9cb7559128ae3e12670f801e493b28d54b3bc",
+    "run.py": "fd098d3d7f9782626469d4266b1233d1931c6cb5688dcde2ef5ca72e9c109c25",
+    "prepare.py": "3f95bc16228bf4e88008895dffb4743f4b5ea96f0de56592d34180318c8a747c",
+    "sqlite-probe.ts": "7a6d124138fa6ffe99ac6c68618cf1f8419d2433cd186257fd49a00a16887ad9"
+  }
+}
