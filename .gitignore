@@ -1,0 +1,7 @@
+*.log
+*.xml
+snapshot-path.txt
+results/
+__pycache__/
+node_modules/
+.bun-cache/

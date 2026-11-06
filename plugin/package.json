@@ -1,0 +1,6 @@
+{
+  "name": "opencode-dynamic-team-p0-fixture",
+  "private": true,
+  "type": "module",
+  "exports": "./index.ts"
+}
