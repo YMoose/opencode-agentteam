@@ -6,6 +6,8 @@ OpenCode 动态 Agent Team 插件项目：由主模型按任务生成成员规�
 
 项目定位、社区方案比较、架构设计及 P0–P4 实施步骤见[项目调研与实施计划](docs/research-plan.md)。
 
+强弱模型如何通过协作逐步确定可委派的任务类型和规模，见补充设计[模型任务范围校准](docs/model-capability-calibration.md)。该方向尚未实现或验证效果。
+
 基线：OpenCode `3ba597f7769e19cc3b5f67e3d6667e7b6318f6a3`。实验插件只调用公共 `@opencode/plugin` API；驱动使用真实 ServerFetch 和文件数据库，并用确定性的本地模型响应替代外部 LLM。
 
 2026-11-06 验证结果：**13 项插件集成检查、142 项选定宿主测试、3 项 SQLite 检查通过**。详见 [P0 结果与设计决策](docs/p0-results.md)，机器可读摘要位于 [evidence/2026-11-06.json](evidence/2026-11-06.json)。
